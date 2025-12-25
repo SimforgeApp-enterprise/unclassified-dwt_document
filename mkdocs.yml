@@ -1,0 +1,56 @@
+site_name: 「风神NF3」  # 站点名称
+
+theme:
+  name: material  # 使用Material for mkdocs主题
+  language: zh  # 设置语言为中文
+
+extra_css:
+  - pdf_custom.css
+
+nav:
+  - 开始: index.md
+  - 创建新项目: 创建新项目.md
+  - 模型安装: 模型安装.md
+  - 风洞测试: 风洞测试.md
+  - 数据处理: 数据处理.md
+
+# markdown功能增强
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - admonition # 提示块(!!!note）
+  - pymdownx.details
+  - pymdownx.superfences # 代码块嵌套（支持mermaid图表）
+  - pymdownx.caret # 支持上标和插入 ^^text^^
+  - pymdownx.mark # 支持高亮 ==text==
+  - pymdownx.tilde # 支持下标和删除线 ~~text~~
+  # 图片配置
+  - attr_list  # 启用属性列表
+  - md_in_html  # 启用在HTML中使用Markdown
+  - pymdownx.blocks.caption  # 启用图片标题
+
+plugins:
+  # - with-pdf:
+  #     cover_subtitle: 数字风洞平台使用手册
+  #     author: 神工坊开发团队 # 作者名称
+  #     copyright: Copyright © 2025 # 版权信息
+  # 同样是 图片配置
+  - glightbox: # 图片灯箱效果（点击放大）
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 60%
+      height: auto
+      zoomable: true
+      draggable: true
+      skip_classes:
+        - custom-skip-class-name
+      auto_caption: false
+      caption_position: bottom
+      background: white
+      shadow: true
+      manual: false

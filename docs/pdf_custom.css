@@ -1,0 +1,210 @@
+/* 针对 mkdocs-with-pdf 插件生成的目录 (Table of Contents) 进行样式调整 */
+
+/* 目录主标题 "Table of contents" */
+#doc-toc h1, #doc-toc h2 {
+    font-size: 26pt !important;
+    margin-bottom: 24px !important;
+    color: #2c3e50 !important;
+}
+
+/* -----------------------------------------------------------
+   目录链接样式增强
+   ----------------------------------------------------------- */
+
+/* 通用链接样式 */
+#doc-toc a {
+    text-decoration: none !important;
+    color: #2c3e50 !important;
+    display: inline-block; /* 确保 padding 生效 */
+}
+
+/* 一级目录 (例如: 1. 开始) */
+#doc-toc > ul > li > a, 
+#doc-toc > ol > li > a,
+.toc-item.level-1 > a {
+    font-size: 16pt !important; /* 增大一级目录字号 */
+    font-weight: bold !important;
+    margin-top: 12px !important;
+    margin-bottom: 8px !important;
+}
+
+/* 二级目录 (例如: 1.1 欢迎使用) */
+#doc-toc > ul > li > ul > li > a, 
+#doc-toc > ol > li > ol > li > a,
+.toc-item.level-2 > a {
+    font-size: 14pt !important; /* 增大二级目录字号 */
+    font-weight: normal !important; /* 二级目录保持常规粗细或稍微加粗 */
+    padding-left: 0px !important; /* 如果有缩进，可以调整 */
+}
+
+/* 三级目录 */
+#doc-toc > ul > li > ul > li > ul > li > a,
+#doc-toc > ol > li > ol > li > ol > li > a,
+.toc-item.level-3 > a {
+    font-size: 12pt !important; /* 增大三级目录字号 */
+    color: #555 !important;
+}
+
+/* 页码样式 (目录中的页码) */
+#doc-toc .page-number, .toc-item .page-number {
+    font-size: 10pt !important; /* 页码也要相应变大 */
+    color: #000 !important;
+}
+
+/* -----------------------------------------------------------
+   页面页脚 (Footer) 样式调整 - 新增
+   ----------------------------------------------------------- */
+@page {
+    /* 调整页脚中间（页码）的字号 */
+    @bottom-center {
+        font-size: 12pt !important; /* 调整页码字号 */
+    }
+    
+    /* 调整页脚右侧（版权）的字号 */
+    @bottom-right {
+        font-size: 10pt !important; /* 调整版权信息字号 */
+    }
+}
+
+/* -----------------------------------------------------------
+   图片和图注 (Figure & Caption) 样式调整 - 新增
+   ----------------------------------------------------------- */
+
+/* Figure 容器 */
+.md-typeset figure {
+    display: table;
+    margin: 1em auto !important; /* 保持上下间距，居中 */
+    padding: 0 !important;
+    page-break-inside: avoid; /* 避免图片和图注被分页切断 */
+    line-height: 0 !important; /* 消除容器内的行高间隙 */
+}
+
+/* 消除 Figure 内部可能存在的 p 标签边距 */
+.md-typeset figure p {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 图片 */
+.md-typeset figure img {
+    display: block;
+    margin: 0 auto !important;
+    margin-bottom: 0.5em !important; /* 控制图片与图注的间距，0.5em 约等于 7pt */
+}
+
+/* 图注 */
+.md-typeset figure figcaption {
+    display: table-caption;
+    caption-side: bottom;
+    font-size: 12pt !important; /* 调整图注字号 */
+    color: #555 !important;
+    text-align: center;
+    margin-top: 0 !important; /* 消除图注顶部的间距 */
+    padding-top: 0 !important;
+    line-height: 1.5 !important; /* 恢复文字行高 */
+    font-style: italic; /* 设为斜体，增加辨识度 */
+}
+
+
+/* -----------------------------------------------------------
+   正文样式调整 (保持不变或微调)
+   ----------------------------------------------------------- */
+
+/* 全局字体设置 */
+body {
+    font-size: 14pt !important;
+}
+
+/* 针对 Material 主题的内容容器 */
+.md-typeset {
+    font-size: 14pt !important;
+    line-height: 1.6 !important;
+}
+
+/* 段落 */
+.md-typeset p {
+    font-size: 11pt !important;
+    margin-bottom: 1em !important;
+    line-height: 1.6 !important;
+}
+
+/* 标题 */
+/* 使用更通用的选择器，覆盖可能存在的 article h1 默认样式 */
+h1, .md-typeset h1, article h1 {
+    font-size: 22pt !important;
+    font-weight: bold !important;
+    color: #2c3e50 !important;
+    margin-top: 1em !important;
+    margin-bottom: 0.5em !important;
+    /* 强制仅普通换页，避免双面打印逻辑导致的空白页 */
+    break-before: page !important;
+    page-break-before: always !important;
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+}
+
+/* 强制重置 article 和 section 的分页行为 */
+article, section {
+    break-before: auto !important;
+    page-break-before: auto !important;
+    break-after: auto !important;
+    page-break-after: auto !important;
+}
+
+.md-typeset h2 {
+    font-size: 18pt !important;
+    font-weight: bold !important;
+    color: #2c3e50 !important;
+    margin-top: 1.2em !important;
+    margin-bottom: 0.6em !important;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+}
+
+.md-typeset h3 {
+    font-size: 14pt !important;
+    font-weight: bold !important;
+    margin-top: 1em !important;
+    margin-bottom: 0.5em !important;
+}
+
+.md-typeset h4 {
+    font-size: 12pt !important;
+    font-weight: bold !important;
+}
+
+/* 列表 */
+.md-typeset ul, .md-typeset ol {
+    font-size: 12pt !important;
+    margin-bottom: 1em !important;
+    /* 一级列表减少缩进，仅保留 bullet 空间 */
+    padding-left: 1.2em !important; 
+    margin-left: 0 !important;
+}
+
+/* 嵌套列表样式调整 - 确保二级、三级列表有明显的缩进 */
+.md-typeset ul ul, 
+.md-typeset ul ol, 
+.md-typeset ol ul, 
+.md-typeset ol ol {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    /* 嵌套列表需要明显的缩进，相对于父级 */
+    padding-left: 2em !important; 
+    list-style-type: circle; /* 二级列表使用空心圆点 (可选) */
+}
+
+.md-typeset li {
+    margin-bottom: 0.5em !important;
+}
+
+/* 代码块 */
+.md-typeset pre, .md-typeset code {
+    font-size: 11pt !important;
+    font-family: Consolas, "Courier New", monospace !important;
+}
+
+/* 表格 */
+.md-typeset table {
+    font-size: 10pt !important;
+}

@@ -1,0 +1,19 @@
+[workspace]
+authors = ["kanglh <2219161234@qq.com>"]
+channels = ["conda-forge"]
+name = "user-manual"
+platforms = ["win-64"]
+version = "0.1.0"
+
+[tasks]
+serve = "mkdocs serve"
+build = "mkdocs build"
+
+
+[dependencies]
+mkdocs-material = ">=9.7.0,<10"
+click = "8.2.1.*"
+
+[pypi-dependencies]
+mkdocs-with-pdf = ">=0.9.3, <0.10"
+mkdocs-glightbox = "*"
